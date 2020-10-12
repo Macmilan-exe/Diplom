@@ -13,9 +13,9 @@ public class Main {
 
         System.out.printf("\n%s\n%s\n%s\n", car1, car2, car3);
 
-        Engine engine1 = new Engine("B6", 145, 52);
-        Engine engine2 = new Engine("V4", 205, 72);
-        Engine engine3 = new Engine("C12", 175, 62);
+        Engine engine1 = new Engine("Name1", 145, 52);
+        Engine engine2 = new Engine("Name2", 205, 72);
+        Engine engine3 = new Engine("Name3", 175, 62);
 
         System.out.printf("\n%s\n%s\n%s\n", engine1, engine2, engine3);
 
@@ -25,20 +25,17 @@ public class Main {
 
         System.out.printf("\n%s\n%s\n%s\n\n", bus1, bus2, bus3);
 
-        ArrayList<String> list = new ArrayList<>();
-        list.add(String.valueOf(car1));
-        list.add(String.valueOf(car2));
-        list.add(String.valueOf(car3));
-        list.add(String.valueOf(bus1));
-        list.add(String.valueOf(bus2));
-        list.add(String.valueOf(bus3));
-        list.remove(1); // remove Mercedes
-        Collections.sort(list);
-        for (String car : list) {
+        ArrayList<Car> list = new ArrayList<>();
+        list.add(car1);
+        list.add(car2);
+        list.add(car3);
+        list.add(bus1);
+        list.add(bus2);
+        list.add(bus3);
+        list.remove(1);
+        list.sort(Comparator.comparing(Car::getName));
+        for (Object car : list) {
             System.out.println(car);
-            if (car.contains("BMW")){
-                System.out.println(car + "Найден");
-            }
         }
     }
 }
