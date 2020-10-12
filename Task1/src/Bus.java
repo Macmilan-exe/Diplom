@@ -16,6 +16,6 @@ public class Bus extends Car{
 
     @Override
     public String toString() {
-        return getName() + Constants.DELIMITER + getMass() + Constants.DELIMITER + place + Constants.DELIMITER;
+        return super.toString() + Constants.DELIMITER + place;        //return getName() + Constants.DELIMITER + getMass() + Constants.DELIMITER + place + Constants.DELIMITER;
     }
 }

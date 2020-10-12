@@ -1,7 +1,7 @@
 import java.util.List;
 
-public class Car{
-    private String name;
+public class Car implements Comparable<Car>{
+    private final String name;
     private double mass;
 
     public Car(String name, double mass) {
@@ -21,21 +21,26 @@ public class Car{
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return Double.compare(car.mass, mass) == 0 &&
-                name == car.name;
+                name.equals(car.name);
     }
 
     @Override
     public String toString() {
-        return name + Constants.DELIMITER + mass + Constants.DELIMITER;
+        return name + Constants.DELIMITER + mass ;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        int comp = Double.compare(mass,o.mass);
+        if (comp == 0){
+            comp = name.compareTo(o.getName());
+        }
+        return comp;
     }
 }

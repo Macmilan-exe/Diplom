@@ -1,9 +1,9 @@
 import java.util.Objects;
 
 public class Engine {
-    private String name;
-    private double power;
-    private double volume;
+    private final String name;
+    private final double power;
+    private final double volume;
 
     public Engine(String name, double power, double volume) {
         this.name = name;
@@ -15,24 +15,12 @@ public class Engine {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getPower() {
         return power;
     }
 
-    public void setPower(double power) {
-        this.power = power;
-    }
-
     public double getVolume() {
         return volume;
-    }
-
-    public void setVolume(double volume) {
-        this.volume = volume;
     }
 
     @Override
@@ -47,6 +35,6 @@ public class Engine {
 
     @Override
     public String toString() {
-        return name + Constants.DELIMITER + power + Constants.DELIMITER + volume + Constants.DELIMITER;
+        return name + Constants.DELIMITER + power + Constants.DELIMITER + volume ;
     }
 }

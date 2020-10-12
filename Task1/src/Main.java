@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Main {
 
@@ -25,17 +27,40 @@ public class Main {
 
         System.out.printf("\n%s\n%s\n%s\n\n", bus1, bus2, bus3);
 
-        ArrayList<Car> list = new ArrayList<>();
+        List<Car> list = new ArrayList<>();
         list.add(car1);
         list.add(car2);
         list.add(car3);
         list.add(bus1);
         list.add(bus2);
         list.add(bus3);
+        list.add(new Car("Lcura",15.0));
         list.remove(1);
-        list.sort(Comparator.comparing(Car::getName));
-        for (Object car : list) {
+        System.out.println("SORTED");
+        Collections.sort(list);
+/*        list.sort(new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                int comp = (int) (o1.getMass() - o2.getMass());
+                if (comp == 0){
+                    comp = o1.getName().compareTo(o2.getName());
+                }
+                return comp;
+           //     return o1.getName().compareTo(o2.getName());
+            }
+        });*/
+     //   list.sort(Comparator.comparing(Car::getName));
+        for (Car car : list) {
             System.out.println(car);
         }
+
+        int index = Collections.binarySearch(list, new Car("BMW", 15555), new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+
+        System.out.println(index);
     }
 }
