@@ -12,11 +12,11 @@ public class Engine {
     private final double volume;
 
     public Engine(String name, double power, double volume) {
-        if (name.equals("")){
+        if (name.isEmpty()){
             throw new EmptyArgumentException(Fields.NAME);
         }
         this.name = name;
-        if (power <= 0 || volume <= 0){
+        if (power <= 0){
             throw new NonPositiveArgumentException(Fields.POWER);
         }
         this.power = power;

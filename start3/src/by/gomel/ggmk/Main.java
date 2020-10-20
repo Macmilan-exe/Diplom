@@ -21,7 +21,10 @@ public class Main {
             for (Car car : cars) {
                 System.out.println(car);
             }
-        }catch ( Exception e){
+        }catch ( IOException e){
+            System.err.println("Problem with file");
+            System.err.println(e.getMessage());
+        } catch (Exception e){
             System.err.println(e.getMessage());
         }
     }

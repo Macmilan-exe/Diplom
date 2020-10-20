@@ -25,7 +25,8 @@ public class CarFactory {
             String[] args = csv.split(Constants.DELIMITER,2);
             return KindCar.valueOf(args[0].toUpperCase()).getCar(args[1]);
         } catch (IllegalArgumentException e){
-           throw new Exception(e);
+            System.err.println(e);
+           throw new Exception("Invalid file");
         }
     }
 }

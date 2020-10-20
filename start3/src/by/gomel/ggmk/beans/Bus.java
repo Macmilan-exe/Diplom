@@ -27,7 +27,7 @@ public class Bus extends Car{
         final int INDEX_MASS = 1;
         final int INDEX_PLACE = 2;
         String[] args = csv.split(Constants.DELIMITER);
-        return new Bus(args[INDEX_NAME],Double.parseDouble(args[INDEX_MASS]), (int) Double.parseDouble(args[INDEX_PLACE]));
+        return new Bus(args[INDEX_NAME],Double.parseDouble(args[INDEX_MASS]), Integer.parseInt(args[INDEX_PLACE]));
     }
 
     public int getPlace() {
