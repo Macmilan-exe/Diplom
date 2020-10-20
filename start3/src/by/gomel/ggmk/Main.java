@@ -1,6 +1,5 @@
 package by.gomel.ggmk;
 
-import by.gomel.ggmk.beans.Bus;
 import by.gomel.ggmk.beans.Car;
 import by.gomel.ggmk.factories.CarFactory;
 
@@ -22,8 +21,8 @@ public class Main {
             for (Car car : cars) {
                 System.out.println(car);
             }
-        }catch (IOException e){
-            e.printStackTrace();
+        }catch ( Exception e){
+            System.err.println(e.getMessage());
         }
     }
 }

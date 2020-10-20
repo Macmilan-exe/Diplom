@@ -1,10 +1,16 @@
 package by.gomel.ggmk.beans;
 
+import by.gomel.ggmk.enums.Fields;
+import by.gomel.ggmk.exceptions.NonPositiveArgumentException;
+
 public class Bus extends Car{
     private int place;
 
     public Bus(String name, double mass, int place) {
         super(name, mass);
+        if (place <= 0){
+            throw new NonPositiveArgumentException(Fields.PLACE);
+        }
         this.place = place;
     }
 

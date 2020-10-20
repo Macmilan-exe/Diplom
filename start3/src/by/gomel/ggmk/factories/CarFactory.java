@@ -20,8 +20,12 @@ public class CarFactory {
         public abstract Car getCar(String csv);
     }
 
-    public static Car getCarFromFactory (String csv){
-        String[] args = csv.split(Constants.DELIMITER,2);
-        return KindCar.valueOf(args[0].toUpperCase()).getCar(args[1]);
+    public static Car getCarFromFactory (String csv) throws Exception {
+        try {
+            String[] args = csv.split(Constants.DELIMITER,2);
+            return KindCar.valueOf(args[0].toUpperCase()).getCar(args[1]);
+        } catch (IllegalArgumentException e){
+           throw new Exception(e);
+        }
     }
 }
