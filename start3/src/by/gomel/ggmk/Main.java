@@ -12,19 +12,25 @@ public class Main {
 
     public static void main(String[] args) {
         try(Scanner scanner = new Scanner(new FileReader(args[0]))) {
-            List<Car> cars = new ArrayList<>();
             Map<WeeksDay, Car> carMap = new EnumMap<>(WeeksDay.class);
+            Map<WeeksDay, Car> carMap2 = new EnumMap<>(WeeksDay.class);
             while (scanner.hasNextLine()){
-                String [] argg = scanner.nextLine().split(";",2);
-                Car car = CarFactory.getCarFromFactory(argg[1]);
-                WeeksDay day = WeeksDay.valueOf(argg[0].toUpperCase());
-                carMap.put(day,car);
-                //map для хранения повторных значений
+                String [] argc = scanner.nextLine().split(";",2);
+                Car car = CarFactory.getCarFromFactory(argc[1]);
+                WeeksDay day = WeeksDay.valueOf(argc[0].toUpperCase());
+                if (carMap.containsKey(day)){
+                    carMap2.put(day,car);
+                } else {
+                    carMap.put(day,car);
+                }
             }
             for (Map.Entry<WeeksDay, Car> car:carMap.entrySet()) {
                 System.out.println(car.getKey() + "\t" + car.getValue());
             }
-        }catch ( IOException e){
+            for (Map.Entry<WeeksDay, Car> car:carMap2.entrySet()) {
+                System.out.println(car.getKey() + "\t" + car.getValue());
+            }
+        }catch (IOException e){
             System.err.println("Problem with file");
             System.err.println(e.getMessage());
         } catch (Exception e){
