@@ -26,6 +26,7 @@ public class CarFactory {
             return KindCar.valueOf(args[0].toUpperCase()).getCar(args[1]);
         } catch (IllegalArgumentException e){
             System.err.println(e);
+            //пробрасываать исключение от runtime
            throw new Exception("Invalid file");
         }
     }

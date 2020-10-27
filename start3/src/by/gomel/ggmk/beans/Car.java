@@ -14,7 +14,7 @@ public class Car implements Comparable<Car>{
         }
         this.mass = mass;
 
-        if (name.equals("")){
+        if (name.isEmpty()){
             throw new EmptyArgumentException(Fields.NAME);
         }
         this.name = name;
@@ -69,4 +69,6 @@ public class Car implements Comparable<Car>{
         }
         return comp;
     }
+
+
 }

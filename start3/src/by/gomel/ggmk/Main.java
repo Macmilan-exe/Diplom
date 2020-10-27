@@ -18,15 +18,16 @@ public class Main {
                 String [] argc = scanner.nextLine().split(";",2);
                 Car car = CarFactory.getCarFromFactory(argc[1]);
                 WeeksDay day = WeeksDay.valueOf(argc[0].toUpperCase());
-                if (carMap.containsKey(day)){
-                    carMap2.put(day,car);
-                } else {
+                carMap2.put(day,car);
+                if (!carMap.containsKey(day)){
                     carMap.put(day,car);
                 }
             }
+
             for (Map.Entry<WeeksDay, Car> car:carMap.entrySet()) {
                 System.out.println(car.getKey() + "\t" + car.getValue());
             }
+            System.out.println("");
             for (Map.Entry<WeeksDay, Car> car:carMap2.entrySet()) {
                 System.out.println(car.getKey() + "\t" + car.getValue());
             }
