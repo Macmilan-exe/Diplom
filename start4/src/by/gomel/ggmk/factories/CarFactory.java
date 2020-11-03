@@ -4,8 +4,11 @@ import by.gomel.ggmk.beans.Bus;
 import by.gomel.ggmk.beans.Car;
 import by.gomel.ggmk.beans.Constants;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class CarFactory {
-    private enum KindCar {
+    enum KindCar {
         CAR {
             public Car getCar(String csv) {
                 return new Car(csv);
@@ -20,7 +23,7 @@ public class CarFactory {
         public abstract Car getCar(String csv);
     }
 
-    public static Car getCarFromFactory(String csv){
+    public static Car getCarFromFactory(String csv) {
         try {
             String[] args = csv.split(Constants.DELIMITER, 2);
             return KindCar.valueOf(args[0].toUpperCase()).getCar(args[1]);
@@ -30,5 +33,7 @@ public class CarFactory {
         }
     }
 
-
+    public static Car getCarFromFactory(ArrayList<String> carList) {
+        return getCarFromFactory(String.join(";", carList));
+    }
 }
