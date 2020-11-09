@@ -5,7 +5,6 @@ import by.gomel.ggmk.beans.Car;
 import by.gomel.ggmk.beans.Constants;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CarFactory {
     enum KindCar {
