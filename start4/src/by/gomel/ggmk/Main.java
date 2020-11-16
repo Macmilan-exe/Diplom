@@ -3,7 +3,10 @@ package by.gomel.ggmk;
 import by.gomel.ggmk.beans.Car;
 import by.gomel.ggmk.beans.Constants;
 import by.gomel.ggmk.enums.WeeksDay;
+import by.gomel.ggmk.exceptions.SourceException;
 import by.gomel.ggmk.factories.CarFactory;
+import by.gomel.ggmk.factories.SourceFactory;
+import by.gomel.ggmk.interfaces.ReaderDAO;
 
 import java.io.FileReader;
 import java.sql.*;
@@ -12,7 +15,18 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        ResourceBundle bundle;
+        ResourceBundle rb = ResourceBundle.getBundle("data", Locale.US);
+        try (ReaderDAO reader = SourceFactory.getReaderFromFactory(rb)){
+            while (reader.hasNext()){
+                System.out.println(reader.nextCar());
+            }
+        } catch (SourceException e){
+            System.err.println(e.getMessage());
+        }
+
+
+    }
+        /*ResourceBundle bundle;
         Scanner sc = new Scanner(System.in);
         System.out.println("What to read data from ? " + "(database or csv)");
         String st = sc.nextLine();
@@ -74,5 +88,5 @@ public class Main {
         } else {
             System.out.println("...");
         }
-    }
+    }*/
 }

@@ -5,6 +5,7 @@ import by.gomel.ggmk.beans.Car;
 import by.gomel.ggmk.beans.Constants;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarFactory {
     enum KindCar {
@@ -32,7 +33,7 @@ public class CarFactory {
         }
     }
 
-    public static Car getCarFromFactory(ArrayList<String> carList) {
+    public static Car getCarFromFactory(List<String> carList) {
         return getCarFromFactory(String.join(";", carList));
     }
 }
